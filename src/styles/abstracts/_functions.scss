@@ -1,0 +1,76 @@
+@use 'sass:math';
+@use './variables' as *;
+
+// %======================== FUNCTIONS ========================% //
+
+// %------------ converts a number to fixed decimals ------------% //
+@function toFixed($value, $decimals) {
+  $nthPowerOfTen: math.pow(10, $decimals);
+  @return calc(math.round($value * $nthPowerOfTen) / $nthPowerOfTen);
+}
+
+// %======================== CONVERT PX TO VW ========================% //
+// % converts px to vw according to custom viewport width
+@function toVW($value, $vp) {
+  $convertedValue: calc($value/$vp*100vw);
+  @return toFixed($convertedValue, 3);
+}
+
+// %------------ adapt to custom viewport width ------------% //
+// % (viewport width max)
+@function vwm($max, $min, $vp) {
+  @return max(toVW($max, $vp), $min);
+}
+
+// % adapt to full HD viewport width (1920px)
+@function desk($max, $min) {
+  @return vwm($max, $min, $FULLHD);
+}
+
+// % adapt to desktop viewport width (CONST) (1440px)
+@function const($const) {
+  @return vwm($const, $const, $DESKTOP);
+}
+
+// % adapt to desktop viewport width (1440px)
+@function desk($max, $min) {
+  @return vwm($max, $min, $DESKTOP);
+}
+
+// % adapt to laptop viewport width (1024px)
+@function lap($max, $min) {
+  @return vwm($max, $min, $LAPTOP);
+}
+
+// % adapt to tablet viewport width (834px or another)
+@function tab($max, $min) {
+  @return vwm($max, $min, $TABLET);
+}
+
+// % adapt to mobile viewport width (600px or another)
+@function mob($max, $min) {
+  @return vwm($max, $min, $MOBILE);
+}
+
+
+// %======================== CONVERT PX TO VH ========================% //
+// % converts px to vw according to custom viewport width
+@function toVH($value, $vp) {
+  $convertedValue: calc($value/$vp*100dvh);
+  @return toFixed($convertedValue, 3);
+}
+
+// %------------ adapt to custom viewport height ------------% //
+// % (viewport height max)
+@function vhm($max, $min, $vph) {
+  @return max(toVH($max, $vph), $min);
+}
+
+// %------------ adapt to custom vw and vh ------------% //
+@function vwhm($initialValue, $minWidth, $minHeight, $viewportWidth, $viewportHeight) {
+
+  $adaptedToCustomMediaQuery: vwm($initialValue, $minWidth, $viewportWidth);
+  $adaptedToCustomViewportHeight: vhm($initialValue, $minHeight, $viewportHeight);
+
+  @return min($adaptedToCustomMediaQuery, $adaptedToCustomViewportHeight);
+}
