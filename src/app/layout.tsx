@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import Providers from '@/components/providers/providers';
 import '@/styles/index.scss';
+import type { Metadata } from "next";
 
 // $======================== RootLayout ========================$ //
 
@@ -12,7 +13,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        {children}
+        <Providers>
+          <div className='wrapper'>
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );
