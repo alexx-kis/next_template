@@ -103,3 +103,8 @@
 @mixin border-radius-diagonal-secondary($value) {
   border-radius: 0 $value 0 $value;
 }
+
+// %------------ text-stroke ------------% // 
+@mixin shadow-text-stroke($width, $color) {
+  text-shadow: $width 0 0 $color, 0 $width 0 $color, calc(-1 * $width) 0 0 $color, 0 calc(-1 * $width) 0 $color;
+}
