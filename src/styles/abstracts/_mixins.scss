@@ -106,5 +106,9 @@
 
 // %------------ text-stroke ------------% // 
 @mixin shadow-text-stroke($width, $color) {
-  text-shadow: $width 0 0 $color, 0 $width 0 $color, calc(-1 * $width) 0 0 $color, 0 calc(-1 * $width) 0 $color;
+  text-shadow:
+    calc(-1 * $width) calc(-1 * $width) 0 $color,
+    $width calc(-1 * $width) 0 $color,
+    calc(-1 * $width) $width 0 $color,
+    $width $width 0 $color;
 }
