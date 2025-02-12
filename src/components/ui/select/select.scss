@@ -1,0 +1,17 @@
+@use '@/styles/abstracts' as *;
+
+/*^ // ^======================== select ========================^ // ^*/
+
+.select {
+  &._selected {
+    .select {
+      &__header-text {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__header-text {
+    opacity: 0.8;
+  }
+}
