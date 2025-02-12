@@ -3,6 +3,8 @@
 /*^ // ^======================== select ========================^ // ^*/
 
 .select {
+  position: relative;
+
   &._selected {
     .select {
       &__header-text {
@@ -11,7 +13,51 @@
     }
   }
 
+  &._open {
+    .select {
+      &__header-icon {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: const(20px);
+    cursor: pointer;
+  }
+
   &__header-text {
     opacity: 0.8;
+  }
+
+  &__header-icon {
+    transition: transform 250ms;
+  }
+
+  &__body {
+    width: 100%;
+    max-height: 0;
+    position: absolute;
+    overflow: clip;
+    transition: max-height 250ms;
+  }
+
+  &__list {
+    height: 100%;
+  }
+
+  &__label {
+    display: block;
+    cursor: pointer;
+    @include square(100%);
+  }
+
+  &__input {
+    position: absolute;
+    z-index: calc(-Infinity);
+    opacity: 0;
   }
 }
