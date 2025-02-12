@@ -5,51 +5,48 @@ import './button.scss';
 
 // ^======================== Button ========================^ //
 
-type ButtonProps = {
+type CommonProps = {
   className?: string;
-  disabled?: boolean;
   active?: boolean;
-  href?: string;
   children: ReactNode;
-  onButtonClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 };
 
-function Button(buttonProps: ButtonProps): React.JSX.Element {
+type ButtonTypeProps = CommonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: never;
+  };
 
-  const { className = '', children, disabled = false, active = false, href, onButtonClick, ...attrs } = buttonProps;
+type LinkTypeProps = CommonProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+    disabled?: never;
+  };
 
-  const isInternalLink = href?.startsWith('/');
+type ButtonProps = ButtonTypeProps | LinkTypeProps;
 
+function Button(buttonProps: ButtonProps) {
+  
+  const { className = '', active = false, children, href, ...props } = buttonProps
+  
   const commonProps = {
-    className: clsx(
-      'button',
-      className,
-      { active },
-    ),
-    ...attrs
+    className: clsx('button', className, { active }),
   };
 
   if (href) {
-    if (isInternalLink) {
-      return (
-        <Link href={href} {...commonProps}>
-          {children}
-        </Link>
-      );
-    }
-    return (
-      <a href={href} {...commonProps} onClick={onButtonClick}>
+    const isInternalLink = href.startsWith('/');
+    return isInternalLink ? (
+      <Link href={href} {...commonProps} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
+        {children}
+      </Link>
+    ) : (
+      <a href={href} {...commonProps} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
         {children}
       </a>
     );
   }
 
   return (
-    <button
-      {...commonProps}
-      disabled={disabled}
-      onClick={disabled ? (e) => e.preventDefault() : onButtonClick}
-    >
+    <button {...commonProps} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
       {children}
     </button>
   );
