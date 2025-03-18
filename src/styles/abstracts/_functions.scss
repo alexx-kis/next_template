@@ -74,3 +74,9 @@
 
   @return min($adaptedToCustomMediaQuery, $adaptedToCustomViewportHeight);
 }
+
+// %------------------------ negative ------------------------% //
+
+@function neg($value) {
+  @return calc(-1 * $value);
+}
