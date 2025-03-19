@@ -7,7 +7,7 @@ import './accordion.scss';
 // $======================== Accordion ========================$ //
 type AccordionDataType = {
   header: [],
-  body: []
+  body: [];
 };
 
 type AccordionProps = {
@@ -15,13 +15,16 @@ type AccordionProps = {
   data: AccordionDataType[];
   HeaderComponent: React.JSXElementConstructor<AccordionDataType['header']>;
   BodyComponent: React.JSXElementConstructor<AccordionDataType['body']>;
+  isFirstTabOpen: boolean;
 };
 
 function Accordion(accordionProps: AccordionProps): React.JSX.Element {
 
-  const { bemClass, data, HeaderComponent, BodyComponent } = accordionProps;
+  const { bemClass, data, HeaderComponent, BodyComponent, isFirstTabOpen } = accordionProps;
 
-  const [activeTabIndex, setActiveTabIndex] = useState<number | null>(0);
+  const [activeTabIndex, setActiveTabIndex] = useState<number | null>(
+    isFirstTabOpen ? 0 : null
+  );
   const [scrollHeight, setScrollHeight] = useState<number | undefined>(0);
 
   const bodyRefs = useRef<(HTMLDivElement | null)[]>([]);
