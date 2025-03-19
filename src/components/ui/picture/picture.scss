@@ -1,0 +1,12 @@
+@use '@/styles/abstracts' as *;
+
+/*^ // ^======================== picture ========================^ // ^*/
+
+picture {
+  display: block;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

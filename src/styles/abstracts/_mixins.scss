@@ -19,7 +19,7 @@
 @mixin adapt($property, $desk, $tab, $mob) {
   #{$property}: desk($desk, $tab);
 
-  @media (width <=$TABLET) {
+  @media (width <=$TAB_WIDTH) {
     #{$property}: tab($tab, $mob);
   }
 }
@@ -56,19 +56,42 @@
   opacity: 0;
 }
 
+// %------------ media queries ------------% // 
 @mixin DESKTOP() {
-  @media (max-width: $DESKTOP) {
+  @media (max-width: $DESK_WIDTH) {
     @content;
   }
 }
+
+@mixin LAPTOP() {
+  @media (max-width: $LAP_WIDTH) {
+    @content;
+  }
+}
+
 @mixin TABLET() {
-  @media (max-width: $TABLET) {
+  @media (max-width: $TAB_WIDTH) {
     @content;
   }
 }
-@mixin MOBILE() {
-  @media (max-width: $MOBILE) {
+
+@mixin MIDDLE() {
+  @media (max-width: $MID_WIDTH) {
     @content;
+  }
+}
+
+@mixin MOBILE() {
+  @media (max-width: $MOB_WIDTH) {
+    @content;
+  }
+}
+
+@mixin HOVER() {
+  @media (hover:hover) {
+    &:hover {
+      @content;
+    }
   }
 }
 
@@ -76,35 +99,43 @@
 @mixin border-radius-top-left($value) {
   border-radius: $value 0 0 0;
 }
+
 @mixin border-radius-top-right($value) {
   border-radius: 0 $value 0 0;
 }
+
 @mixin border-radius-bottom-right($value) {
-  border-radius: 0 0 $value  0;
+  border-radius: 0 0 $value 0;
 }
+
 @mixin border-radius-bottom-left($value) {
   border-radius: 0 0 0 $value;
 }
+
 @mixin border-radius-top($value) {
   border-radius: $value $value 0 0;
 }
+
 @mixin border-radius-right($value) {
   border-radius: 0 $value $value 0;
 }
+
 @mixin border-radius-bottom($value) {
   border-radius: 0 0 $value $value;
 }
+
 @mixin border-radius-left($value) {
   border-radius: $value 0 0 $value;
 }
+
 @mixin border-radius-diagonal-main($value) {
   border-radius: $value 0 $value 0;
 }
+
 @mixin border-radius-diagonal-secondary($value) {
   border-radius: 0 $value 0 $value;
 }
 
-// %------------ text-stroke ------------% // 
 @mixin shadow-text-stroke($width, $color) {
   text-shadow:
     calc(-1 * $width) calc(-1 * $width) 0 $color,

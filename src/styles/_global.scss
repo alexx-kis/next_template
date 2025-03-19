@@ -6,6 +6,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
 }
+
 .no-scroll {
   overflow: hidden;
 }
@@ -26,7 +27,30 @@ html {
   margin-inline: auto;
   padding-inline: desk(40px, 32px);
 
-  @media (max-width: $TABLET) {
-    padding-inline: tab(32px, 16px);
+  @include TABLET {
+    padding-inline: tab(40px, 16px);
+  }
+}
+
+.modal {
+  position: fixed;
+  inset-block-start: 0;
+  inset-block-end: 0;
+  z-index: 100;
+  display: block;
+  max-width: calc(100% - 25px);
+  max-height: calc(100% - 25px);
+  margin: auto;
+
+  visibility: hidden;
+  opacity: 0;
+
+  overflow: auto;
+  transition: all 250ms;
+  user-select: text;
+
+  &._open {
+    visibility: visible;
+    opacity: 1;
   }
 }
