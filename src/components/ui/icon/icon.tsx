@@ -7,13 +7,15 @@ import { useEffect, useRef } from 'react';
 
 type IconProps = {
   src: string;
+  alt?: string | undefined;
   width: number;
   height: number;
-  className?: string;
+  bemClass?: string;
 };
 
-function Icon({ src, width, height, className }: IconProps): React.JSX.Element {
+function Icon({ src, alt, width, height, bemClass }: IconProps): React.JSX.Element {
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const altProp = alt ? alt : '';
 
   useEffect(() => {
     if (!imgRef.current) return;
@@ -26,6 +28,7 @@ function Icon({ src, width, height, className }: IconProps): React.JSX.Element {
         const svg = parser.parseFromString(data, 'image/svg+xml').querySelector('svg');
 
         if (!svg) {
+          // eslint-disable-next-line no-console
           console.error(`No SVG found in ${src}`);
           return;
         }
@@ -36,20 +39,21 @@ function Icon({ src, width, height, className }: IconProps): React.JSX.Element {
           svg.setAttribute('viewBox', `0 0 ${svg.getAttribute('width')} ${svg.getAttribute('height')}`);
         }
 
-        if (className) {
-          svg.setAttribute('class', className);
+        if (bemClass) {
+          svg.setAttribute('class', bemClass);
         }
 
         imgRef.current?.replaceWith(svg);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Error fetching the SVG:', error);
       }
     };
 
     replaceWithSvg();
-  }, [src, className]);
+  }, [src, bemClass]);
 
-  return <Image ref={imgRef} src={src} alt='' width={width} height={height} />;
+  return <Image ref={imgRef} src={src} alt={altProp} width={width} height={height} />;
 }
 
 export default Icon;
