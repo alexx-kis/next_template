@@ -5,6 +5,9 @@
 html {
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 }
 
 .no-scroll {
@@ -14,8 +17,8 @@ html {
 .wrapper {
   width: 100%;
   min-height: 100%;
-  overflow: clip;
   position: relative;
+  overflow: clip;
   font-family: lato, Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
@@ -33,14 +36,14 @@ html {
 }
 
 .modal {
-  position: fixed;
-  inset-block-start: 0;
-  inset-block-end: 0;
-  z-index: 100;
   display: block;
   max-width: calc(100% - 25px);
   max-height: calc(100% - 25px);
   margin: auto;
+  position: fixed;
+  inset-block-start: 0;
+  inset-block-end: 0;
+  z-index: 100;
 
   visibility: hidden;
   opacity: 0;
