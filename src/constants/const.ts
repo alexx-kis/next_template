@@ -1,8 +1,11 @@
 // %======================== const ========================% //
 
-export const basePath = process.env.NODE_ENV === 'production'
-  ? '/'
-  : '';
+export const mapping: Record<string, string> = {
+  'dev.msmedias.ru': '/advline-3.0/out',
+  'dev.advline.ru': ''
+};
+
+export const PREFIX = mapping[process.env.NEXT_PUBLIC_HOSTNAME ?? ''] || '';
 
 // namespace for reducer slices
 export enum NameSpace {
@@ -23,9 +26,16 @@ export enum MediaQuery {
   MOBILE = `(max-width: ${ViewportWidth.MOBILE}px)`,
 }
 
-export enum Extension {
+export enum Ext {
   PNG = '.png',
   WEBP = '.webp',
   SVG = '.svg',
   GIF = '.gif',
+  JPEG = '.jpeg',
+}
+
+export enum MediaPrefix {
+  Desk = '_desk',
+  Tab = '_tab',
+  Mob = '_mob',
 }

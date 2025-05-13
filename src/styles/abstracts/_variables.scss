@@ -1,6 +1,6 @@
-/*% // %======================== variables ========================% // %*/
+// %======================== variables ========================% //
 
-/*% // %------------ viewport ------------% // %*/
+// %------------ viewport ------------% //
 $WIDESCREEN: calc(16 / 9);
 $tabAsp: calc(834 / 1194);
 
@@ -17,5 +17,9 @@ $mobRatio: calc($MID_WIDTH / $MOB_WIDTH);
 $DESK_HEIGHT: calc($DESK_WIDTH / $WIDESCREEN);
 $TAB_HEIGHT: calc($TAB_WIDTH / $tabAsp);
 
-/*% // %------------ colors ------------% // %*/
+// %------------ colors ------------% //
 
+
+
+// %------------ z-indexes ------------% //
+$modalZIndex: 100;

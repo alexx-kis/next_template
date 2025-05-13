@@ -1,9 +1,9 @@
 import { generatePaths } from '@/utils/utils';
-import { basePath, Extension } from './const';
+import { PREFIX, Ext } from './const';
 
 // %======================== images ========================% //
 
-const imagesPath = `.${basePath}/img`;
+const imagesPath = `.${PREFIX}/img`;
 
 export const Path = {
   ICONS: `${imagesPath}/icons`,
@@ -13,4 +13,4 @@ export const Path = {
 export const icons = generatePaths(Path.ICONS, [
   'icon-name',
 
-], Extension.SVG);
+], Ext.SVG);

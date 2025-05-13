@@ -95,6 +95,12 @@
   }
 }
 
+@mixin ACTIVE() {
+  &:active {
+    @content;
+  }
+}
+
 // %------------ border-radii ------------% //
 @mixin border-radius-top-left($value) {
   border-radius: $value 0 0 0;

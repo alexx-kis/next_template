@@ -1,0 +1,14 @@
+@use '@/styles/abstracts' as *;
+
+/*^ // ^======================== burger ========================^ // ^*/
+
+.burger {
+  @include MIDDLE {
+    @include square(mid($mobRatio * 28px, 28px));
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

@@ -24,7 +24,7 @@ html {
 }
 
 .container {
-  max-width: const(1440px);
+  max-width: desk(1440px);
   height: 100%;
 
   margin-inline: auto;
@@ -37,14 +37,11 @@ html {
 
 .modal {
   display: block;
-  max-width: calc(100% - 25px);
-  max-height: calc(100% - 25px);
   margin: auto;
   position: fixed;
   inset-block-start: 0;
   inset-block-end: 0;
-  z-index: 100;
-
+  z-index: $modalZIndex;
   visibility: hidden;
   opacity: 0;
 
