@@ -1,6 +1,6 @@
 // %======================== utils ========================% //
 
-export const isEscKey = (e: KeyboardEvent) => e.key === 'Escape';
+export const isEscapeKey = (e: KeyboardEvent) => e.key === 'Escape';
 
 
 export const getRandomNumber = (min: number, max: number): number => {
