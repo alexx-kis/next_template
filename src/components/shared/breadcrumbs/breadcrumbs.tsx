@@ -2,7 +2,6 @@
 
 import Breadcrumb from '@/components/ui/breadcrumb/breadcrumb';
 import { AppRoute, PagesNames } from '@/constants/const';
-import { getCleanHref } from '@/utils/utils';
 import { usePathname } from 'next/navigation';
 import './breadcrumbs.scss';
 
@@ -16,9 +15,19 @@ function Breadcrumbs(breadcrumbsProps: BreadcrumbsProps): React.JSX.Element {
 
   const { bemClass } = breadcrumbsProps;
   const pathname = usePathname();
-  const pathnames = pathname.split('/').slice(1);
+  const rawPathnames = pathname.split('/').slice(1); // remove first empty segment
 
-  const excludeLastBreadcrumb = pathnames[pathnames.length - 2] === AppRoute.Blog.slice(1);
+  // Remove trailing empty string
+  const cleanedPathnames =
+    rawPathnames[rawPathnames.length - 1] === ''
+      ? rawPathnames.slice(0, -1)
+      : rawPathnames;
+
+  // Remove article slug if on a blog article page
+  const pathnamesWithoutLast =
+    cleanedPathnames[0] === 'blog' && cleanedPathnames.length > 1
+      ? cleanedPathnames.slice(0, -1)
+      : cleanedPathnames;
 
   return (
     <ul className={`${bemClass} breadcrumbs`}>
@@ -28,19 +37,15 @@ function Breadcrumbs(breadcrumbsProps: BreadcrumbsProps): React.JSX.Element {
           href={AppRoute.Home}
         />
       </li>
-      {pathnames.map((href, index) => {
-        if (excludeLastBreadcrumb && index === pathnames.length - 1) {
-          return null;
-        }
-        return (
-          <li key={href} className='breadcrumbs__item'>
-            <Breadcrumb
-              title={PagesNames[`/${getCleanHref(href)}` as keyof typeof PagesNames] || pathnames[pathnames.length - 1]}
-              href={`/${href}`}
-            />
-          </li>
-        );
-      })}
+      {pathnamesWithoutLast.map((href) => (
+        <li key={href} className='breadcrumbs__item'>
+          <Breadcrumb
+            title={PagesNames[`/${href}/` as keyof typeof PagesNames]}
+            href={`/${href}/`}
+          />
+        </li>
+      ))}
+
     </ul>
   );
 }

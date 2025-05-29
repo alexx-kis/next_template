@@ -3,19 +3,20 @@
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
-// ^======================== Icon ========================^ //
+// ^======================== SVG ========================^ //
 
-type IconProps = {
+type SVGProps = {
+  bemClass?: string;
   src: string;
   alt?: string | undefined;
-  width: number;
-  height: number;
-  bemClass?: string;
+  size: number[];
 };
 
-function Icon({ src, alt, width, height, bemClass }: IconProps): React.JSX.Element {
+function SVG({ src, alt, bemClass, size }: SVGProps): React.JSX.Element {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const altProp = alt ? alt : '';
+  const width = size[0];
+  const height = size[1] ?? size[0]
 
   useEffect(() => {
     if (!imgRef.current) return;
@@ -53,7 +54,7 @@ function Icon({ src, alt, width, height, bemClass }: IconProps): React.JSX.Eleme
     replaceWithSvg();
   }, [src, bemClass]);
 
-  return <Image ref={imgRef} src={src} alt={altProp} width={width} height={height} />;
+  return <Image className={bemClass} ref={imgRef} src={src} alt={altProp} width={width} height={height} />;
 }
 
-export default Icon;
+export default SVG;

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import Icon from '../icon/icon';
+import SVG from '../svg/svg';
 import './select.scss';
 
 // ^======================== Select ========================^ //
@@ -8,8 +8,7 @@ import './select.scss';
 type SelectProps = {
   bemClass: string;
   iconSrc: string;
-  iconWidth: number;
-  iconHeight: number;
+  iconSize: number;
   options: string[];
   name: string;
   value: string;
@@ -19,7 +18,7 @@ type SelectProps = {
 
 function Select(selectProps: SelectProps): React.JSX.Element {
 
-  const { bemClass, iconSrc, iconWidth, iconHeight, options, name, onSelectChange, value, placeholder } = selectProps;
+  const { bemClass, iconSrc, iconSize, options, name, onSelectChange, value, placeholder } = selectProps;
 
   const [isOpen, setIsOpen] = useState(false);
   const [headerText, setHeaderText] = useState(placeholder);
@@ -74,11 +73,10 @@ function Select(selectProps: SelectProps): React.JSX.Element {
     >
       <div className='select__header' onClick={handleSelectHeaderClick}>
         <p className='select__header-text'>{headerText}</p>
-        <Icon
+        <SVG
           bemClass='select__header-icon'
           src={iconSrc}
-          width={iconWidth}
-          height={iconHeight}
+          size={[iconSize]}
         />
       </div>
       <div className='select__body' ref={selectBodyRef}>
