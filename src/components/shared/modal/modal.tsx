@@ -1,3 +1,6 @@
+import { OpenElement } from '@/constants/const';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
+import { dropOpenElement, getOpenElements } from '@/store/open-element-process';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { ReactNode } from 'react';
@@ -7,15 +10,23 @@ import './modal.scss';
 
 type ModalProps = {
   className: string;
+  name: OpenElement;
   children: ReactNode;
-  isModalOpen: boolean;
-  crossSrc?: string;
-  onModalCloseButtonClick?: () => void;
+  closeButtonIconSrc?: string;
+  onCloseButtonClick?: () => void;
 };
 
 function Modal(modalProps: ModalProps): React.JSX.Element {
 
-  const { className, children, crossSrc, isModalOpen, onModalCloseButtonClick } = modalProps;
+  const { className, name, children, closeButtonIconSrc, onCloseButtonClick } = modalProps;
+  const openElements = useAppSelector(getOpenElements);
+  const isModalOpen = openElements.includes(name);
+  const dispatch = useAppDispatch();
+
+  const handleCloseButtonClick = () => {
+    dispatch(dropOpenElement(name));
+    onCloseButtonClick?.();
+  };
 
   return (
     <dialog
@@ -24,22 +35,20 @@ function Modal(modalProps: ModalProps): React.JSX.Element {
         { '_open': isModalOpen }
       )}
     >
-
-      <button
-        className='modal__close-button'
-        onClick={onModalCloseButtonClick}
-      >
-        {crossSrc &&
+      {closeButtonIconSrc && (
+        <button
+          className='modal__close-button'
+          onClick={handleCloseButtonClick}
+        >
           <Image
-            src={crossSrc}
+            src={closeButtonIconSrc}
             alt=''
             width={40}
             height={40}
-          />}
-      </button>
-
+          />
+        </button>
+      )}
       {children}
-
     </dialog>
   );
 }

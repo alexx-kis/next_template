@@ -7,5 +7,5 @@ import { process } from './process';
 
 export const rootReducer = combineReducers({
   [NameSpace.Process]: process.reducer,
-  [NameSpace.OpenElementProcess]: openElementProcess.reducer,
+  [NameSpace.OPEN_ELEMENTS]: openElementProcess.reducer,
 });

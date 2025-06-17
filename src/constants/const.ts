@@ -10,7 +10,7 @@ export const PREFIX = mapping[process.env.NEXT_PUBLIC_HOSTNAME ?? ''] || '';
 // namespace for reducer slices
 export enum NameSpace {
   Process = 'PROCESS',
-  OpenElementProcess = 'OPEN_ELEMENT_PROCESS'
+  OPEN_ELEMENTS = 'OPEN_ELEMENTS'
 }
 
 export enum ViewportWidth {
