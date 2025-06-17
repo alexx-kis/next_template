@@ -4,6 +4,7 @@ import { dropOpenElement, getOpenElements } from '@/store/open-element-process';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { ReactNode } from 'react';
+import Overlay from '../overlay/overlay';
 import './modal.scss';
 
 // ^======================== Modal ========================^ //
@@ -35,6 +36,12 @@ function Modal(modalProps: ModalProps): React.JSX.Element {
         { '_open': isModalOpen }
       )}
     >
+      <Overlay
+        bemClass={clsx(
+          'modal__overlay',
+          { '_visible': isModalOpen }
+        )}
+      />
       {closeButtonIconSrc && (
         <button
           className='modal__close-button'

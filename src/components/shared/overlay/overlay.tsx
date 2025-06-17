@@ -1,27 +1,34 @@
 'use client';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
+import { dropOpenElement, getOpenElements } from '@/store/open-element-process';
 import { isEscapeKey } from '@/utils/utils';
-import clsx from 'clsx';
 import { useEffect } from 'react';
 import './overlay.scss';
-import { getOpenElement, dropOpenElement } from '@/store/open-element-process';
 
 // ^======================== Overlay ========================^ //
 
-function Overlay(): React.JSX.Element {
+type OverlayProps = {
+  bemClass: string;
+};
+
+function Overlay(overlayProps: OverlayProps): React.JSX.Element {
+
+  const { bemClass } = overlayProps;
+
   const dispatch = useAppDispatch();
-  const openElement = useAppSelector(getOpenElement);
+  const openElements = useAppSelector(getOpenElements);
 
   const onEscKeydown = (e: KeyboardEvent) => {
     if (isEscapeKey(e)) {
-      dispatch(dropOpenElement());
+      const lastOpenElement = openElements[openElements.length - 1];
+      dispatch(dropOpenElement(lastOpenElement));
       document.removeEventListener('keydown', onEscKeydown);
     }
   };
 
   useEffect(() => {
-    if (openElement) {
+    if (openElements.length !== 0) {
       document.addEventListener('keydown', onEscKeydown);
     }
 
@@ -31,17 +38,12 @@ function Overlay(): React.JSX.Element {
   });
 
   const handleOverlayClick = () => {
-    dispatch(dropOpenElement());
+    const lastOpenElement = openElements[openElements.length - 1];
+    dispatch(dropOpenElement(lastOpenElement));
   };
 
   return (
-    <div
-      className={clsx(
-        'overlay',
-        { '_visible': openElement }
-      )}
-      onClick={handleOverlayClick}
-    />
+    <div className={`${bemClass} overlay`} onClick={handleOverlayClick} />
   );
 }
 export default Overlay;
