@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   // trailingSlash: true,
+  sassOptions: {
+    prependData: `@use '@/styles/abstracts' as *;`,
+  },
 };
 
 export default nextConfig;
