@@ -1,9 +1,7 @@
-@use '@/styles/abstracts' as *;
-
-/*^ // ^======================== file-field ========================^ // ^*/
+// ^======================== file-field ========================^ //
 
 .file-field {
-  height: const(146px);
+  height: desk(146px);
 
   @include TABLET {
     height: tab(146px, 118px);
@@ -14,13 +12,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: const(4px);
+    gap: desk(4px);
     height: 100%;
     cursor: pointer;
   }
 
   &._file-added {
-    height: const(56px);
+    height: desk(56px);
     background-color: $darkGray10;
 
     .file-field__label {
@@ -41,12 +39,12 @@
   }
 
   &__icon {
-    @include square(const(24px));
+    @include square(desk(24px));
   }
 
   &__placeholder {
     opacity: 0.5;
-    font-size: const(14px);
+    font-size: desk(14px);
     font-weight: 500;
     line-height: 1.3;
 
@@ -56,7 +54,7 @@
   }
 
   &__file-name {
-    font-size: const(14px);
+    font-size: desk(14px);
 
     @include TABLET {
       font-size: tab(14px, 12px);
@@ -65,6 +63,6 @@
 
   &__remove-button {
     display: none;
-    @include square(const(12px));
+    @include square(desk(12px));
   }
 }

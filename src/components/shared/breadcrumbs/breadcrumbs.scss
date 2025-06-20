@@ -1,10 +1,8 @@
-@use '@/styles/abstracts' as *;
-
-/*$ // $======================== breadcrumbs ========================$ // $*/
+// $======================== breadcrumbs ========================$ //
 
 .breadcrumbs {
   display: flex;
-  gap: const(16px);
+  gap: desk(16px);
   margin-bottom: desk(32px, 24px);
 
   @include TABLET {
@@ -23,9 +21,9 @@
         content: '';
         display: block;
         position: absolute;
-        left: calc(100% + const(6px));
+        left: calc(100% + desk(6px));
         background-color: $white;
-        @include circle(const(4px));
+        @include circle(desk(4px));
 
         @include TABLET {
           @include circle(tab(4px, 2px));

@@ -1,11 +1,9 @@
-@use '@/styles/abstracts' as *;
-
-/*$ // $======================== accordion ========================$ // $*/
+// $======================== accordion ========================$ //
 
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: const(12px);
+  gap: desk(12px);
 
   &__tab {}
 

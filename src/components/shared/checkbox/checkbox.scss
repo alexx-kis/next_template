@@ -1,6 +1,4 @@
-@use '@/styles/abstracts' as *;
-
-/*^ // ^======================== checkbox ========================^ // ^*/
+// ^======================== checkbox ========================^ //
 
 .checkbox {
 
@@ -39,7 +37,7 @@
 
   /*? // ?------------------------ here? ------------------------? // ?*/
   &__label {
-    font-size: const(14px);
+    font-size: desk(14px);
     color: $darkGray50;
 
     @include TABLET {
@@ -48,7 +46,7 @@
   }
 
   &__icon {
-    @include square(const(16px));
-    margin-right: const(10px);
+    @include square(desk(16px));
+    margin-right: desk(10px);
   }
 }

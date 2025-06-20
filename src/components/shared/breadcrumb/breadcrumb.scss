@@ -1,10 +1,8 @@
-@use '@/styles/abstracts' as *;
-
-/*^ // ^======================== breadcrumb ========================^ // ^*/
+// ^======================== breadcrumb ========================^ //
 
 .breadcrumb {
   color: $white;
-  font-size: const(16px);
+  font-size: desk(16px);
   font-weight: 500;
   letter-spacing: -0.04em;
 
@@ -15,9 +13,9 @@
   &._active {
     display: grid;
     place-items: center;
-    height: const(27px);
-    padding-inline: const(10px);
-    border-radius: const(6px);
+    height: desk(27px);
+    padding-inline: desk(10px);
+    border-radius: desk(6px);
     background-color: $white25;
 
     @include TABLET {

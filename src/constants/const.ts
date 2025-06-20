@@ -17,7 +17,7 @@ export const PagesNames = {
 
 // %------------------------ rendering ------------------------% //
 export enum ViewportWidth {
-  FULLHD = 2560,
+  FULLHD = 1920,
   DESKTOP = 1440,
   TABLET = 834,
   MIDDLE = 577,
