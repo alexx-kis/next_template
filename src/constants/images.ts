@@ -10,7 +10,7 @@ export const Path = {
 };
 
 // %------------------------ icons ------------------------% //
-export const icons = generatePaths(Path.ICONS, [
+export const ICONS = generatePaths(Path.ICONS, [
   'icon-name',
 
 ], Ext.SVG);

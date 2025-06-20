@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  // trailingSlash: true,
+  trailingSlash: true,
   sassOptions: {
     prependData: `@use '@/styles/abstracts' as *;`,
   },

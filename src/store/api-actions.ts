@@ -1,14 +1,7 @@
-import { AppDispatch, AppState } from '@/types/redux-types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
+import { AsyncThunkType } from './store-types';
 
 // %======================== api-actions ========================% //
-
-type AsyncThunkType = {
-  dispatch: AppDispatch;
-  state: AppState;
-  extra: AxiosInstance;
-};
 
 export const doAsyncAction = createAsyncThunk<
   void,

@@ -31,6 +31,14 @@ aside {
   display: block;
 }
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
 html,
 body {
   // height: 100%;

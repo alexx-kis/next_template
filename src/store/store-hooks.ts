@@ -1,4 +1,4 @@
-import { AppDispatch, AppState } from '@/types/redux-types';
+import { AppDispatch, AppState } from '@/store/store-types';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 // %======================== redux hooks ========================% //

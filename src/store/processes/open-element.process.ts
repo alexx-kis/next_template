@@ -1,11 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace } from '@/constants/const';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { OpenElementsProcess } from '../store-types';
 
-// %======================== openElementProcess.slice ========================% //
-
-type OpenElementsProcess = {
-  openElements: (string | null)[];
-};
+// %======================== openElementProcess ========================% //
 
 const initialState: OpenElementsProcess = {
   openElements: [],

@@ -1,8 +1,8 @@
 'use client';
 
-import Breadcrumb from '@/components/ui/breadcrumb/breadcrumb';
 import { AppRoute, PagesNames } from '@/constants/const';
 import { usePathname } from 'next/navigation';
+import Breadcrumb from '../breadcrumb/breadcrumb';
 import './breadcrumbs.scss';
 
 // $======================== Breadcrumbs ========================$ //
@@ -33,8 +33,8 @@ function Breadcrumbs(breadcrumbsProps: BreadcrumbsProps): React.JSX.Element {
     <ul className={`${bemClass} breadcrumbs`}>
       <li className='breadcrumbs__item'>
         <Breadcrumb
-          title={PagesNames[AppRoute.Home]}
-          href={AppRoute.Home}
+          title={PagesNames[AppRoute.HOME]}
+          href={AppRoute.HOME}
         />
       </li>
       {pathnamesWithoutLast.map((href) => (

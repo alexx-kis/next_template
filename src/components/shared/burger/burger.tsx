@@ -1,6 +1,7 @@
+import { OpenElement } from '@/constants/const';
 import { ICONS } from '@/constants/images';
-import { useAppDispatch } from '@/hooks';
-import { openElement } from '@/store/open-element-process';
+import { addOpenElement } from '@/store/processes/open-element.process';
+import { useAppDispatch } from '@/store/store-hooks';
 import Image from 'next/image';
 import './burger.scss';
 
@@ -15,7 +16,7 @@ function Burger(burgerProps: BurgerProps): React.JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleBurgerClick = () => {
-    dispatch(openElement('aside'));
+    dispatch(addOpenElement(OpenElement.ASIDE));
   };
 
   return (

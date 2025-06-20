@@ -1,6 +1,6 @@
 import { OpenElement } from '@/constants/const';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
-import { dropOpenElement, getOpenElements } from '@/store/open-element-process';
+import { dropOpenElement, getOpenElements } from '@/store/processes/open-element.process';
+import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { ReactNode } from 'react';

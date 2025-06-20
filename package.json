@@ -8,6 +8,13 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browserslist": [
+    "last 5 chrome versions",
+    "last 5 firefox versions",
+    "last 5 safari versions",
+    "not dead",
+    "not ie 11"
+  ],
   "dependencies": {
     "@reduxjs/toolkit": "2.5.1",
     "axios": "1.7.9",

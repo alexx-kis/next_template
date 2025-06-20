@@ -1,7 +1,7 @@
 'use client';
 
-import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks';
-import { dropOpenElement, getOpenElements } from '@/store/open-element-process';
+import { dropOpenElement, getOpenElements } from '@/store/processes/open-element.process';
+import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 import { isEscapeKey } from '@/utils/utils';
 import { useEffect } from 'react';
 import './overlay.scss';

@@ -7,13 +7,17 @@ export const mapping: Record<string, string> = {
 
 export const PREFIX = mapping[process.env.NEXT_PUBLIC_HOSTNAME ?? ''] || '';
 
-// namespace for reducer slices
-export enum NameSpace {
-  Process = 'PROCESS',
-  OPEN_ELEMENTS = 'OPEN_ELEMENTS'
-}
+// %------------------------ routing ------------------------% //
+export enum AppRoute {
+  HOME = '/',
+};
+export const PagesNames = {
+  [AppRoute.HOME]: 'Главная',
+};
 
+// %------------------------ rendering ------------------------% //
 export enum ViewportWidth {
+  FULLHD = 2560,
   DESKTOP = 1440,
   TABLET = 834,
   MIDDLE = 577,
@@ -36,11 +40,19 @@ export enum Ext {
 }
 
 export enum MediaPrefix {
-  Desk = '_desk',
-  Tab = '_tab',
-  Mob = '_mob',
+  FULL = '_full',
+  DESK = '_desk',
+  TAB = '_tab',
+  MOB = '_mob',
+}
+
+// %------------------------ store ------------------------% //
+export enum NameSpace {
+  PROCESS = 'PROCESS',
+  OPEN_ELEMENTS = 'OPEN_ELEMENTS'
 }
 
 export enum OpenElement {
-  OpenElement = 'OPEN_ELEMENT', //! change this
+  OPEN_ELEMENT = 'OPEN_ELEMENT', //! change this
+  ASIDE = 'ASIDE',
 }

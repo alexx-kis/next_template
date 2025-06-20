@@ -1,6 +1,6 @@
 import Providers from '@/components/providers/providers';
+import Wrapper from '@/components/shared/wrapper/wrapper';
 import '@/styles/index.scss';
-import type { Metadata } from "next";
 
 // $======================== RootLayout ========================$ //
 
@@ -8,13 +8,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang='en'
-      // className={`${inter.variable} ${unbounded.variable}`} // fonts
+    // className={`${inter.variable} ${unbounded.variable}`} // fonts
     >
       <body>
         <Providers>
-          <div className='wrapper'>
+          <Wrapper>
             {children}
-          </div>
+          </Wrapper>
         </Providers>
       </body>
     </html>
