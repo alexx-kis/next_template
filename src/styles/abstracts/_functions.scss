@@ -100,7 +100,7 @@
   @return min($adaptedToCustomMediaQuery, $adaptedToCustomViewportHeight);
 }
 
-/*% // %------------------ adapt value ------------------% // %*/
+// %------------------ adapt value ------------------% //
 @function adaptValue($value) {
   @return vwhm($value, max(toVH($value, $DESK_WIDTH), $value), 0, $DESK_WIDTH, $DESK_HEIGHT);
 }
