@@ -7,7 +7,7 @@
   opacity: 0;
   background-color: #00000080;
   cursor: pointer;
-  z-index: $overlayZIndex;
+  // z-index: $overlayZIndex;
   transition: all 250ms;
 
   &._visible {
