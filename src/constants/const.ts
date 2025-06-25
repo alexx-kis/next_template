@@ -53,6 +53,6 @@ export enum NameSpace {
 }
 
 export enum OpenElement {
-  OPEN_ELEMENT = 'OPEN_ELEMENT', //! change this
+  OPEN_ELEMENT = 'OPEN_ELEMENT',
   ASIDE = 'ASIDE',
 }
