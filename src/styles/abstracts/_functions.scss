@@ -25,11 +25,7 @@
 }
 
 // % adapt to full HD viewport width (1920px)
-@function fhd($max, $min: null) {
-  @if $min ==null {
-    @return vwm($max, $max, $FULLHD_WIDTH);
-  }
-
+@function fhd($max, $min) {
   @return vwm($max, $min, $FULLHD_WIDTH);
 }
 
@@ -40,6 +36,11 @@
   }
 
   @return vwm($max, $min, $DESK_WIDTH);
+}
+
+// % adapt to container viewport width (1024px)
+@function cont($max, $min) {
+  @return vwm($max, $min, $CONT_WIDTH);
 }
 
 // % adapt to laptop viewport width (1024px)
@@ -88,7 +89,7 @@
 // %------------ adapt to custom viewport height ------------% //
 // % (viewport height max)
 @function dvhm($max, $min, $vph) {
-  @return max(toVH($max, $vph), $min);
+  @return max(toDVH($max, $vph), $min);
 }
 
 // %------------ adapt to custom vw and vh ------------% //
@@ -98,9 +99,4 @@
   $adaptedToCustomViewportHeight: dvhm($initialValue, $minHeight, $viewportHeight);
 
   @return min($adaptedToCustomMediaQuery, $adaptedToCustomViewportHeight);
-}
-
-// %------------------ adapt value ------------------% //
-@function adaptValue($value) {
-  @return vwhm($value, max(toVH($value, $DESK_WIDTH), $value), 0, $DESK_WIDTH, $DESK_HEIGHT);
 }
