@@ -1,37 +1,32 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import { dirname, join } from "path";
-import tseslint from "typescript-eslint";
-import { fileURLToPath } from "url";
+import js from '@eslint/js';
+import reactHooks from 'eslint-plugin-react-hooks';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+export default [
+  { ignores: ['.next/**', 'out/**', 'dist/**', 'node_modules/**'] },
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
 
-const tsconfigPath = join(__dirname, "tsconfig.json");
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        project: tsconfigPath,
-        tsconfigRootDir: __dirname,
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
       },
     },
     plugins: {
-      "@typescript-eslint": tseslint.plugin,
+      'react-hooks': reactHooks,
     },
     rules: {
+      ...reactHooks.configs.recommended.rules,
+      'no-console': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
-      "no-console": "warn",
-      "@typescript-eslint/explicit-module-boundary-types": "off"
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
     },
   },
 ];
-
-export default eslintConfig;

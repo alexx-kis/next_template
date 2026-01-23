@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   },
   trailingSlash: true,
   sassOptions: {
-    prependData: `@use '@/styles/abstracts' as *;`,
+    // prependData: `@use '@/styles/abstracts' as *;`,
   },
 };
 
