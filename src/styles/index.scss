@@ -1,2 +1,4 @@
-@forward './reset';
-@forward './keyframes';
+@use './reset';
+@use './keyframes';
+@use './colors';
+@use './global';
